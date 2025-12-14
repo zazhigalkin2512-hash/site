@@ -1,0 +1,63 @@
+{
+  "name": "payzen",
+  "version": "1.0.0",
+  "description": "PayZen - Умное управление подписками и регулярными платежами",
+  "private": true,
+  "scripts": {
+    "setup": "powershell -ExecutionPolicy Bypass -File ./setup.ps1",
+    "auto-setup": "powershell -ExecutionPolicy Bypass -File ./auto-setup.ps1",
+    "continue": "powershell -ExecutionPolicy Bypass -File ./continue-setup.ps1",
+    "install-node": "powershell -ExecutionPolicy Bypass -File ./install-node.ps1",
+    "fix-vulns": "npm audit fix",
+    "preinstall": "powershell -ExecutionPolicy Bypass -Command \"$nodeExe = Get-Command node -ErrorAction SilentlyContinue; if (-not $nodeExe) { $commonPaths = @('$env:ProgramFiles\\nodejs\\node.exe', '${env:ProgramFiles(x86)}\\nodejs\\node.exe'); $found = $false; foreach ($path in $commonPaths) { if (Test-Path $path) { $found = $true; break } }; if (-not $found) { Write-Host 'Node.js not found. Run: npm run install-node' -ForegroundColor Yellow; exit 1 } }\"",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "powershell -ExecutionPolicy Bypass -File ./start.ps1",
+    "start:simple": "powershell -ExecutionPolicy Bypass -File ./start.ps1",
+    "lint": "next lint",
+    "server": "node server/index.js",
+    "server:dev": "nodemon server/index.js"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.35.0",
+    "nodemailer": "^6.9.7",
+    "imap": "^0.8.19",
+    "mailparser": "^3.6.5",
+    "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
+    "zod": "^3.22.4",
+    "recharts": "^2.10.3",
+    "lucide-react": "^0.294.0",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17",
+    "@types/express": "^4.17.21",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/nodemailer": "^6.4.14",
+    "@types/pg": "^8.10.9",
+    "typescript": "^5.3.2",
+    "tailwindcss": "^3.3.6",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.54.0",
+    "eslint-config-next": "^14.0.0",
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
